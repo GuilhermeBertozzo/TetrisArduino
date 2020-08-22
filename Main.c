@@ -106,46 +106,108 @@ void gerarL()
     pecaAtual.estado[3][3]= 0;
 }
 /*
-    ....
-    ..X.
-    XXX.
-    ....
+     0123
+    0....
+    1..X.
+    2XXX.
+    3....
 */
 void gerarI()
 {
     peca pecaAtual;
     pecaAtual.posX = 0;
     pecaAtual.posY = 4;
-    pecaAtual.estado[0][0]= 1;
+    pecaAtual.estado[0][0]= 0;
     pecaAtual.estado[0][1]= 0;
-    pecaAtual.estado[0][2]= 0;
+    pecaAtual.estado[0][2]= 1;
     pecaAtual.estado[0][3]= 0;
-    pecaAtual.estado[1][0]= 1;
+    pecaAtual.estado[1][0]= 0;
     pecaAtual.estado[1][1]= 0;
-    pecaAtual.estado[1][2]= 0;
+    pecaAtual.estado[1][2]= 1;
     pecaAtual.estado[1][3]= 0;
-    pecaAtual.estado[2][0]= 1;
+    pecaAtual.estado[2][0]= 0;
     pecaAtual.estado[2][1]= 0;
-    pecaAtual.estado[2][2]= 0;
+    pecaAtual.estado[2][2]= 1;
     pecaAtual.estado[2][3]= 0;
-    pecaAtual.estado[3][0]= 1;
+    pecaAtual.estado[3][0]= 0;
     pecaAtual.estado[3][1]= 0;
-    pecaAtual.estado[3][2]= 0;
+    pecaAtual.estado[3][2]= 1;
     pecaAtual.estado[3][3]= 0;
 } 
 /*
-
-    X...
-    X...
-    X...
-    X...
+     0123
+    0..X.
+    1..X.
+    2..X.
+    3..X.
 */
+
 void gerarO()
 {
     peca pecaAtual;
     pecaAtual.posX = 0;
     pecaAtual.posY = 4;
-    pecaAtual.estado[0][0]= 1;
+    pecaAtual.estado[0][0]= 0;
+    pecaAtual.estado[0][1]= 0;
+    pecaAtual.estado[0][2]= 0;
+    pecaAtual.estado[0][3]= 0;
+    pecaAtual.estado[1][0]= 0;
+    pecaAtual.estado[1][1]= 1;
+    pecaAtual.estado[1][2]= 1;
+    pecaAtual.estado[1][3]= 0;
+    pecaAtual.estado[2][0]= 0;
+    pecaAtual.estado[2][1]= 1;
+    pecaAtual.estado[2][2]= 1;
+    pecaAtual.estado[2][3]= 0;
+    pecaAtual.estado[3][0]= 0;
+    pecaAtual.estado[3][1]= 0;
+    pecaAtual.estado[3][2]= 0;
+    pecaAtual.estado[3][3]= 0;
+} 
+/*
+     0123
+    0....
+    1.XX.
+    2.XX.
+    3....
+*/
+
+void gerarT()
+{
+    peca pecaAtual;
+    pecaAtual.posX = 0;
+    pecaAtual.posY = 4;
+    pecaAtual.estado[0][0]= 0;
+    pecaAtual.estado[0][1]= 0;
+    pecaAtual.estado[0][2]= 0;
+    pecaAtual.estado[0][3]= 0;
+    pecaAtual.estado[1][0]= 0;
+    pecaAtual.estado[1][1]= 0;
+    pecaAtual.estado[1][2]= 0;
+    pecaAtual.estado[1][3]= 0;
+    pecaAtual.estado[2][0]= 0;
+    pecaAtual.estado[2][1]= 1;
+    pecaAtual.estado[2][2]= 0;
+    pecaAtual.estado[2][3]= 0;
+    pecaAtual.estado[3][0]= 1;
+    pecaAtual.estado[3][1]= 1;
+    pecaAtual.estado[3][2]= 1;
+    pecaAtual.estado[3][3]= 0;
+} 
+/*
+     0123    
+    0....
+    1....
+    2.X..
+    3XXX.
+*/
+
+void gerarJ()
+{
+    peca pecaAtual;
+    pecaAtual.posX = 0;
+    pecaAtual.posY = 4;
+    pecaAtual.estado[0][0]= 0;
     pecaAtual.estado[0][1]= 0;
     pecaAtual.estado[0][2]= 0;
     pecaAtual.estado[0][3]= 0;
@@ -154,20 +216,81 @@ void gerarO()
     pecaAtual.estado[1][2]= 0;
     pecaAtual.estado[1][3]= 0;
     pecaAtual.estado[2][0]= 1;
-    pecaAtual.estado[2][1]= 0;
-    pecaAtual.estado[2][2]= 0;
+    pecaAtual.estado[2][1]= 1;
+    pecaAtual.estado[2][2]= 1;
     pecaAtual.estado[2][3]= 0;
-    pecaAtual.estado[3][0]= 1;
+    pecaAtual.estado[3][0]= 0;
     pecaAtual.estado[3][1]= 0;
     pecaAtual.estado[3][2]= 0;
     pecaAtual.estado[3][3]= 0;
 } 
+/*
+     0123    
+    0....
+    1X...
+    2XXX.
+    3....
+*/
 
+void gerarS()
+{
+    peca pecaAtual;
+    pecaAtual.posX = 0;
+    pecaAtual.posY = 4;
+    pecaAtual.estado[0][0]= 0;
+    pecaAtual.estado[0][1]= 0;
+    pecaAtual.estado[0][2]= 0;
+    pecaAtual.estado[0][3]= 0;
+    pecaAtual.estado[1][0]= 0;
+    pecaAtual.estado[1][1]= 1;
+    pecaAtual.estado[1][2]= 1;
+    pecaAtual.estado[1][3]= 0;
+    pecaAtual.estado[2][0]= 1;
+    pecaAtual.estado[2][1]= 1;
+    pecaAtual.estado[2][2]= 0;
+    pecaAtual.estado[2][3]= 0;
+    pecaAtual.estado[3][0]= 0;
+    pecaAtual.estado[3][1]= 0;
+    pecaAtual.estado[3][2]= 0;
+    pecaAtual.estado[3][3]= 0;
+} 
+/*
+     0123    
+    0....
+    1.XX.
+    2XX..
+    3....
+*/
 
-
-
-
-
+void gerarZ()
+{
+    peca pecaAtual;
+    pecaAtual.posX = 0;
+    pecaAtual.posY = 4;
+    pecaAtual.estado[0][0]= 0; 
+    pecaAtual.estado[0][1]= 0; 
+    pecaAtual.estado[0][2]= 0; 
+    pecaAtual.estado[0][3]= 0; 
+    pecaAtual.estado[1][0]= 1; 
+    pecaAtual.estado[1][1]= 1; 
+    pecaAtual.estado[1][2]= 0; 
+    pecaAtual.estado[1][3]= 0; 
+    pecaAtual.estado[2][0]= 0; 
+    pecaAtual.estado[2][1]= 1; 
+    pecaAtual.estado[2][2]= 1; 
+    pecaAtual.estado[2][3]= 0; 
+    pecaAtual.estado[3][0]= 0; 
+    pecaAtual.estado[3][1]= 0; 
+    pecaAtual.estado[3][2]= 0; 
+    pecaAtual.estado[3][3]= 0; 
+} 
+/*
+     0123    
+    0....
+    1XX..
+    2.XX.
+    3....
+*/
 
 
 void delay(unsigned int milliseconds){//funcao que permite criar delays para debugging
