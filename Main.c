@@ -1,31 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-void iniciarMatriz();//inicia o campo de jogo com valor 0
-void jogar();
-void delay(unsigned int milliseconds);
-void criarNovaPeca();
+#include <conio.h>
+int** iniciarCampoDeJogo();//inicia o campo de jogo com valor 0 // feito
+void jogar(int ** campoDeJogo);
+void delay(unsigned int milliseconds); // feito
+void criarNovaPeca(); //
 void gerarL();
+void gerarJ();
+void gerarS();
+void gerarZ();
+void gerarT();
+void gerarO();
+void gerarI();
+void renderizar(int **campoDeJogo);
+void descerPeca();
+void jogada(char);
 
-int jogo [20][10];
 
 int main()
 {
-    iniciarMatriz();
-    jogar();
+    int **campoDeJogo =  iniciarCampoDeJogo();
+    jogar(campoDeJogo);
+    free(campoDeJogo);
     return 0;     
 }
 
 
-void iniciarMatriz()
+int** iniciarCampoDeJogo()
 {
-    for(int i=0; i<20; i++)
+    int **campoDeJogo;
+    campoDeJogo = (int **)malloc(sizeof(int[20][10]));
+    for(int i = 0; i < 20; i++)
     {
-        for(int j=0; i<10; i++)
+        for(int j = 0; j < 10; j++)
         {
-            jogo[i][j] = 0;
+            campoDeJogo[i][j] = 0;
         }
+        
     }
+    return campoDeJogo;
 }
 typedef struct peca
 {
@@ -34,7 +48,7 @@ typedef struct peca
    int posY;
 }peca;
 
-void jogar()
+void jogar(int ** campoDeJogo)
 {
     int fimDeJogo = 0;
     while(fimDeJogo == 0)
@@ -50,13 +64,21 @@ void jogar()
             {
                 clock_t momentoAtual = clock();
                 atualEmMillis = momentoAtual / CLOCKS_PER_SEC;
-                jogada(getch());
             }
             descerPeca();
+            renderizar(campoDeJogo);
         }
     }
 }
 
+
+void jogada(char tecla){
+    
+    return;
+}
+void descerPeca(){
+    return;
+}
 void criarNovaPeca()
 {
     srand(time(0));
@@ -81,6 +103,18 @@ void criarNovaPeca()
         break;
     }
 
+}
+
+void renderizar(int **campoDeJogo){
+    for(int i=0; i<20; i++)
+    {
+        for(int j=0; j<10; j++)
+        {
+            printf("%d ", campoDeJogo[i][j]);
+        }
+        printf("\n");
+    }
+    return;
 }
 
 void gerarL()
@@ -293,10 +327,10 @@ void gerarZ()
 */
 
 
+
 void delay(unsigned int milliseconds){//funcao que permite criar delays para debugging
 
     clock_t start = clock();
 
     while((clock() - start) * 1000 / CLOCKS_PER_SEC < milliseconds);
 }
-
