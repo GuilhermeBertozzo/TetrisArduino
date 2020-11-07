@@ -2,10 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+typedef struct peca {
+    char estado[4][4];
+    int posX;
+    int posY;
+} peca;
+
 int **iniciarCampoDeJogo();  //inicia o campo de jogo com valor 0 // feito
 void jogar(int **campoDeJogo);
 void delay(unsigned int milliseconds);  // feito
-void criarNovaPeca();                   //
+void criarNovaPeca();
 void gerarL();
 void gerarJ();
 void gerarS();
@@ -14,8 +21,11 @@ void gerarT();
 void gerarO();
 void gerarI();
 void renderizar(int **campoDeJogo);
+void jogada(char tecla, peca pecaAtual);
+void moverEsquerda();
+void moverDireita();
 void descerPeca();
-void jogada(char);
+peca girarPeca(peca pecaAtual);
 
 int main() {
     int **campoDeJogo = iniciarCampoDeJogo();
@@ -25,25 +35,19 @@ int main() {
     return 0;
 }
 
-int** iniciarCampoDeJogo() {
+int **iniciarCampoDeJogo() {
     int **campoDeJogo;
-    campoDeJogo = malloc(20 * sizeof(int*));
+    campoDeJogo = malloc(20 * sizeof(int *));
     for (int i = 0; i < 20; i++) {
         campoDeJogo[i] = malloc(10 * sizeof(int));
     }
-    for(int i = 0; i < 20; i++){
-        for(int j = 0; j < 10; j++){
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 10; j++) {
             campoDeJogo[i][j] = 0;
         }
     }
-    
     return campoDeJogo;
 }
-typedef struct peca {
-    char estado[4][4];
-    int posX;
-    int posY;
-} peca;
 
 void jogar(int **campoDeJogo) {
     int fimDeJogo = 0;
@@ -64,10 +68,76 @@ void jogar(int **campoDeJogo) {
     }
 }
 
-void jogada(char tecla) {
+void descerPeca() {
     return;
 }
-void descerPeca() {
+
+void moverEsquerda() {
+    return;
+}
+
+void moverDireita() {
+    return;
+}
+
+peca girarPeca(peca pecaAtual) {
+    int pontas[4], meio1[4], meio2[4], centro[4];
+
+    pontas[0] = pecaAtual.estado[0][0];
+    pontas[1] = pecaAtual.estado[0][3];
+    pontas[2] = pecaAtual.estado[3][3];
+    pontas[3] = pecaAtual.estado[3][0];
+
+    meio1[0] = pecaAtual.estado[0][1];
+    meio1[1] = pecaAtual.estado[1][3];
+    meio1[2] = pecaAtual.estado[3][2];
+    meio1[3] = pecaAtual.estado[2][0];
+
+    meio2[0] = pecaAtual.estado[0][2];
+    meio2[1] = pecaAtual.estado[2][3];
+    meio2[2] = pecaAtual.estado[3][1];
+    meio2[3] = pecaAtual.estado[1][0];
+
+    centro[0] = pecaAtual.estado[1][1];
+    centro[1] = pecaAtual.estado[1][2];
+    centro[2] = pecaAtual.estado[2][2];
+    centro[3] = pecaAtual.estado[2][1];
+
+    pecaAtual.estado[0][0] = pontas[3];
+    pecaAtual.estado[0][1] = meio1[3];
+    pecaAtual.estado[0][2] = meio2[3];
+    pecaAtual.estado[0][3] = pontas[0];
+    pecaAtual.estado[1][0] = meio2[2];
+    pecaAtual.estado[1][1] = centro[3];
+    pecaAtual.estado[1][2] = centro[0];
+    pecaAtual.estado[1][3] = meio1[0];
+    pecaAtual.estado[2][0] = meio1[2];
+    pecaAtual.estado[2][1] = centro[2];
+    pecaAtual.estado[2][2] = centro[1];
+    pecaAtual.estado[2][3] = meio2[0];
+    pecaAtual.estado[3][0] = pontas[2];
+    pecaAtual.estado[3][1] = meio2[1];
+    pecaAtual.estado[3][2] = meio1[1];
+    pecaAtual.estado[3][3] = pontas[1];
+
+    return pecaAtual;
+}
+
+void jogada(char tecla, peca pecaAtual) {
+    switch (tecla) {
+        case 'a':
+            moverEsquerda(pecaAtual);
+            break;
+        case 's':
+            descerPeca(pecaAtual);
+            break;
+        case 'd':
+            moverDireita(pecaAtual);
+            break;
+        case 'r':
+            rotacionar(pecaAtual);
+            break;
+    }
     return;
 }
 void criarNovaPeca() {
@@ -165,7 +235,6 @@ void gerarI() {
     2..X.
     3..X.
 */
-
 void gerarO() {
     peca pecaAtual;
     pecaAtual.posX = 0;
@@ -194,7 +263,6 @@ void gerarO() {
     2.XX.
     3....
 */
-
 void gerarT() {
     peca pecaAtual;
     pecaAtual.posX = 0;
@@ -223,7 +291,6 @@ void gerarT() {
     2.X..
     3XXX.
 */
-
 void gerarJ() {
     peca pecaAtual;
     pecaAtual.posX = 0;
@@ -252,7 +319,6 @@ void gerarJ() {
     2XXX.
     3....
 */
-
 void gerarS() {
     peca pecaAtual;
     pecaAtual.posX = 0;
@@ -281,7 +347,6 @@ void gerarS() {
     2XX..
     3....
 */
-
 void gerarZ() {
     peca pecaAtual;
     pecaAtual.posX = 0;
